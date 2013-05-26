@@ -72,7 +72,7 @@ public final class Trade implements Comparable<Trade> {
    * @param type The trade type (BID side or ASK side)
    * @param tradableAmount The depth of this trade
    * @param tradableIdentifier The exchange identifier (e.g. "BTC/USD")
-   * @param transactionCurrency The currency
+   * @param transactionCurrency The transaction currency (e.g. USD in BTC/USD)
    * @param price The price (either the bid or the ask)
    * @param timestamp The timestamp when the order was placed. Exchange matching is usually price first then timestamp asc to clear older orders
    * @param id The id of the trade
@@ -135,9 +135,11 @@ public final class Trade implements Comparable<Trade> {
 
     if (this.getTimestamp().before(trade.getTimestamp())) {
       return -1;
-    } else if (this.getTimestamp().after(trade.getTimestamp())) {
+    }
+    else if (this.getTimestamp().after(trade.getTimestamp())) {
       return 1;
-    } else {
+    }
+    else {
       return 0;
     }
   }

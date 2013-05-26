@@ -24,17 +24,20 @@ package com.xeiam.xchange.examples.mtgox.v1.service.trade.polling;
 import com.xeiam.xchange.Exchange;
 import com.xeiam.xchange.dto.trade.LimitOrder;
 import com.xeiam.xchange.dto.trade.OpenOrders;
-import com.xeiam.xchange.examples.mtgox.v1.MtGoxExamplesUtils;
-import com.xeiam.xchange.service.trade.polling.PollingTradeService;
+import com.xeiam.xchange.examples.mtgox.v1.MtGoxV1ExamplesUtils;
+import com.xeiam.xchange.service.polling.PollingTradeService;
 
 /**
  * Test placing a limit order at MtGox. Note that this is using the old V0 API, since at this time the V1 API has no cancel order functionality
+ * 
+ * @deprecated Use V2! This will be removed in 1.8.0+
  */
+@Deprecated
 public class CancelOrderDemo {
 
   public static void main(String[] args) {
 
-    Exchange mtgox = MtGoxExamplesUtils.createExchange();
+    Exchange mtgox = MtGoxV1ExamplesUtils.createExchange();
 
     // Interested in the private trading functionality (authentication)
     PollingTradeService tradeService = mtgox.getPollingTradeService();

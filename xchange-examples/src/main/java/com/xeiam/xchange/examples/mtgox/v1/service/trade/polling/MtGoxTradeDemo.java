@@ -32,9 +32,9 @@ import com.xeiam.xchange.dto.account.AccountInfo;
 import com.xeiam.xchange.dto.trade.LimitOrder;
 import com.xeiam.xchange.dto.trade.MarketOrder;
 import com.xeiam.xchange.dto.trade.OpenOrders;
-import com.xeiam.xchange.examples.mtgox.v1.MtGoxExamplesUtils;
-import com.xeiam.xchange.service.account.polling.PollingAccountService;
-import com.xeiam.xchange.service.trade.polling.PollingTradeService;
+import com.xeiam.xchange.examples.mtgox.v1.MtGoxV1ExamplesUtils;
+import com.xeiam.xchange.service.polling.PollingAccountService;
+import com.xeiam.xchange.service.polling.PollingTradeService;
 
 /**
  * <p>
@@ -44,12 +44,16 @@ import com.xeiam.xchange.service.trade.polling.PollingTradeService;
  * <li>Connecting to Mt Gox BTC exchange with authentication</li>
  * <li>Retrieving account info data</li>
  * </ul>
+ * <p>
+ * 
+ * @deprecated Use V2! This will be removed in 1.8.0+
  */
+@Deprecated
 public class MtGoxTradeDemo {
 
   public static void main(String[] args) {
 
-    Exchange mtgox = MtGoxExamplesUtils.createExchange();
+    Exchange mtgox = MtGoxV1ExamplesUtils.createExchange();
 
     // Interested in the private trading functionality (authentication)
     PollingTradeService tradeService = mtgox.getPollingTradeService();

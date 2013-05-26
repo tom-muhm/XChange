@@ -23,17 +23,20 @@ package com.xeiam.xchange.examples.mtgox.v1.service.account;
 
 import com.xeiam.xchange.Exchange;
 import com.xeiam.xchange.dto.account.AccountInfo;
-import com.xeiam.xchange.examples.mtgox.v1.MtGoxExamplesUtils;
-import com.xeiam.xchange.service.account.polling.PollingAccountService;
+import com.xeiam.xchange.examples.mtgox.v1.MtGoxV1ExamplesUtils;
+import com.xeiam.xchange.service.polling.PollingAccountService;
 
 /**
  * Demo requesting account info at MtGox
+ * 
+ * @deprecated Use V2! This will be removed in 1.8.0+
  */
+@Deprecated
 public class AccountInfoDemo {
 
   public static void main(String[] args) {
 
-    Exchange mtgox = MtGoxExamplesUtils.createExchange();
+    Exchange mtgox = MtGoxV1ExamplesUtils.createExchange();
 
     // Interested in the private account functionality (authentication)
     PollingAccountService accountService = mtgox.getPollingAccountService();

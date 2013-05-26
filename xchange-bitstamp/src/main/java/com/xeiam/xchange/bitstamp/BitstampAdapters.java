@@ -79,7 +79,7 @@ public final class BitstampAdapters {
    * Adapts a com.xeiam.xchange.bitstamp.api.model.OrderBook to a OrderBook Object
    * 
    * @param bitstampOrderBook The bitstamp order book
-   * @param tradableIdentifier The tradeable identifier (e.g. BTC in BTC/USD)
+   * @param tradableIdentifier The tradable identifier (e.g. BTC in BTC/USD)
    * @param currency The currency (e.g. USD in BTC/USD)
    * @return The XChange OrderBook
    */

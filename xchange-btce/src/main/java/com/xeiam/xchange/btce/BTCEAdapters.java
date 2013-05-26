@@ -102,7 +102,8 @@ public final class BTCEAdapters {
       // appending
       if (orderType.equalsIgnoreCase("bid")) {
         limitOrders.add(0, adaptOrder(btceOrder[1], btceOrder[0], tradableIdentifier, currency, orderType, id));
-      } else {
+      }
+      else {
         limitOrders.add(adaptOrder(btceOrder[1], btceOrder[0], tradableIdentifier, currency, orderType, id));
       }
     }

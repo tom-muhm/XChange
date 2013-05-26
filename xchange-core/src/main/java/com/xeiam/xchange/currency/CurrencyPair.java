@@ -59,6 +59,7 @@ public class CurrencyPair {
   public static final CurrencyPair BTC_RUB = new CurrencyPair("BTC", "RUB");
   public static final CurrencyPair BTC_SEK = new CurrencyPair("BTC", "SEK");
   public static final CurrencyPair BTC_SGD = new CurrencyPair("BTC", "SGD");
+  public static final CurrencyPair BTC_NOK = new CurrencyPair("BTC", "NOK");
   public static final CurrencyPair BTC_THB = new CurrencyPair("BTC", "THB");
 
   public static final CurrencyPair BTC_RUR = new CurrencyPair("BTC", "RUR");
@@ -136,14 +137,16 @@ public class CurrencyPair {
       if (other.baseCurrency != null) {
         return false;
       }
-    } else if (!baseCurrency.equals(other.baseCurrency)) {
+    }
+    else if (!baseCurrency.equals(other.baseCurrency)) {
       return false;
     }
     if (counterCurrency == null) {
       if (other.counterCurrency != null) {
         return false;
       }
-    } else if (!counterCurrency.equals(other.counterCurrency)) {
+    }
+    else if (!counterCurrency.equals(other.counterCurrency)) {
       return false;
     }
     return true;

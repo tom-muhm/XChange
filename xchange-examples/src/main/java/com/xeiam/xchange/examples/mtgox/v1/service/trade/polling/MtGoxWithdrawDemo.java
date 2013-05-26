@@ -24,8 +24,8 @@ package com.xeiam.xchange.examples.mtgox.v1.service.trade.polling;
 import java.math.BigDecimal;
 
 import com.xeiam.xchange.Exchange;
-import com.xeiam.xchange.examples.mtgox.v1.MtGoxExamplesUtils;
-import com.xeiam.xchange.service.account.polling.PollingAccountService;
+import com.xeiam.xchange.examples.mtgox.v1.MtGoxV1ExamplesUtils;
+import com.xeiam.xchange.service.polling.PollingAccountService;
 
 /**
  * <p>
@@ -35,12 +35,16 @@ import com.xeiam.xchange.service.account.polling.PollingAccountService;
  * <li>Connecting to Mt Gox BTC exchange with authentication</li>
  * <li>Retrieving account info data</li>
  * </ul>
+ * <p>
+ * 
+ * @deprecated Use V2! This will be removed in 1.8.0+
  */
+@Deprecated
 public class MtGoxWithdrawDemo {
 
   public static void main(String[] args) {
 
-    Exchange mtgox = MtGoxExamplesUtils.createExchange();
+    Exchange mtgox = MtGoxV1ExamplesUtils.createExchange();
 
     PollingAccountService accountService = mtgox.getPollingAccountService();
     System.out.println(accountService.getAccountInfo());

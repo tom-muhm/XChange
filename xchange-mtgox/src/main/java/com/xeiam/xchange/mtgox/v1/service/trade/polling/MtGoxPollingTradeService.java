@@ -39,13 +39,15 @@ import com.xeiam.xchange.mtgox.v1.MtGoxAdapters;
 import com.xeiam.xchange.mtgox.v1.MtGoxV1;
 import com.xeiam.xchange.mtgox.v1.dto.trade.MtGoxGenericResponse;
 import com.xeiam.xchange.mtgox.v1.dto.trade.MtGoxOpenOrder;
+import com.xeiam.xchange.service.polling.PollingTradeService;
 import com.xeiam.xchange.service.streaming.BasePollingExchangeService;
-import com.xeiam.xchange.service.trade.polling.PollingTradeService;
 import com.xeiam.xchange.utils.Assert;
 
 /**
  * @author timmolter
+ * @deprecated Use V2! This will be removed in 1.8.0+
  */
+@Deprecated
 public class MtGoxPollingTradeService extends BasePollingExchangeService implements PollingTradeService {
 
   private final ParamsDigest paramsDigest;
@@ -54,7 +56,7 @@ public class MtGoxPollingTradeService extends BasePollingExchangeService impleme
   /**
    * Constructor
    * 
-   * @param exchangeSpecification The exchange specification with the configuration parameters
+   * @param exchangeSpecification The {@link ExchangeSpecification}
    */
   public MtGoxPollingTradeService(ExchangeSpecification exchangeSpecification) {
 
@@ -77,10 +79,11 @@ public class MtGoxPollingTradeService extends BasePollingExchangeService impleme
 
     verify(marketOrder);
 
-    MtGoxGenericResponse mtGoxSuccess = mtGoxV1.placeOrder(exchangeSpecification.getApiKey(), paramsDigest, getNonce(), marketOrder.getTradableIdentifier(), marketOrder.getTransactionCurrency(),
-        marketOrder.getType().equals(OrderType.BID) ? "bid" : "ask", marketOrder.getTradableAmount().multiply(new BigDecimal(MtGoxUtils.BTC_VOLUME_AND_AMOUNT_INT_2_DECIMAL_FACTOR)), null);
+    MtGoxGenericResponse mtGoxSuccess =
+        mtGoxV1.placeOrder(exchangeSpecification.getApiKey(), paramsDigest, getNonce(), marketOrder.getTradableIdentifier(), marketOrder.getTransactionCurrency(), marketOrder.getType().equals(
+            OrderType.BID) ? "bid" : "ask", marketOrder.getTradableAmount().multiply(new BigDecimal(MtGoxUtils.BTC_VOLUME_AND_AMOUNT_INT_2_DECIMAL_FACTOR)), null);
 
-    return mtGoxSuccess.getReturn().toString();
+    return mtGoxSuccess.getReturnString();
   }
 
   @Override
@@ -100,7 +103,7 @@ public class MtGoxPollingTradeService extends BasePollingExchangeService impleme
 
     MtGoxGenericResponse mtGoxSuccess = mtGoxV1.placeOrder(exchangeSpecification.getApiKey(), paramsDigest, getNonce(), tradableIdentifier, currency, type, amount, price);
 
-    return mtGoxSuccess.getReturn().toString();
+    return mtGoxSuccess.getReturnString();
   }
 
   @Override

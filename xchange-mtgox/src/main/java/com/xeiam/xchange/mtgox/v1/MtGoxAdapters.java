@@ -52,7 +52,10 @@ import com.xeiam.xchange.utils.DateUtils;
 
 /**
  * Various adapters for converting from mtgox DTOs to XChange DTOs
+ * 
+ * @deprecated Use V2! This will be removed in 1.8.0+
  */
+@Deprecated
 public final class MtGoxAdapters {
 
   /**
@@ -138,7 +141,8 @@ public final class MtGoxAdapters {
 
     if (mtGoxWallet == null) { // use the presence of a currency String to indicate existing wallet at MtGox
       return null; // an account maybe doesn't contain a MtGoxWallet
-    } else {
+    }
+    else {
       BigMoney cash = MoneyUtils.parse(mtGoxWallet.getBalance().getCurrency() + " " + mtGoxWallet.getBalance().getValue());
       return new Wallet(mtGoxWallet.getBalance().getCurrency(), cash);
     }
